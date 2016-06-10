@@ -79,4 +79,13 @@ function add_reading_minutes_to_the_content( $content ) {
  */
 add_filter( 'the_content', 'add_reading_minutes_to_the_content' );
 
-
+/**
+ * プラグインのスタイルシートを登録
+ */
+function add_reading_minutes_styles() {
+	wp_enqueue_style('plugin-hans-on-sample', plugin_dir_url(__FILE__). 'style.css' );
+}
+/**
+ * アクションフックを登録
+ */
+add_action( 'wp_enqueue_scripts', 'add_reading_minutes_styles');
