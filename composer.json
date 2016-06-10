@@ -1,0 +1,20 @@
+{
+  "name": "wckansai2016/plugin-hans-on-sample",
+  "authors": [
+    {
+      "name": "WCK2016 Plguin Hans-on Team"
+    }
+  ],
+  "require-dev": {
+    "squizlabs/php_codesniffer": "2.*",
+    "wp-coding-standards/wpcs": "2014-12-11"
+  },
+  "scripts" :{
+    "post-update-cmd": [
+      "php vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs/"
+    ],
+    "test": [
+      "phpunit && php vendor/bin/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset>
+    <rule ref="WordPress">
+        <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
+        <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
+    </rule>
+
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/tests/*</exclude-pattern>
+</ruleset>
