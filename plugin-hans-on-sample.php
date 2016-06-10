@@ -12,7 +12,6 @@
  */
 
 
-
 /**
  *
  * 文字列から何分で読めるか計算する
@@ -23,7 +22,7 @@
  */
 function count_reading_minutes( $content ) {
 	// 文字列からHTMLタグを除去
-	$text   = strip_tags( $content );
+	$text = strip_tags( $content );
 	// 文字列の数を計測
 	$length = mb_strlen( $text );
 	// 日本人の可読文字数は1分間で約400字から600字らしいので、(出展：角川ミニッツブック 400で割って四捨五入)
@@ -39,39 +38,45 @@ function count_reading_minutes( $content ) {
  * @param string $attr
  * @param string $content
  */
-function reading_minutes_shortcode( $attr , $content = '' ) {
+function reading_minutes_shortcode( $attr, $content = '' ) {
 	//TODO 引数の説明どうする？ 英語表記とか?
 
-	$post = get_post(); // global $post とほぼ同じ動作。
+	$post    = get_post(); // global $post とほぼ同じ動作。
 	$content = $post->post_content;
 	$minutes = count_reading_minutes( $content );
 
 	$template = 'この記事は約%d分で読めます。';
-	$text = sprintf( $template, $minutes );
+	$text     = sprintf( $template, $minutes );
 
 	//エスケープ大切！
-	return '<span class="reading-minutes">'.esc_html( $text ). '</span>';
+	return '<span class="reading-minutes">' . esc_html( $text ) . '</span>';
 }
 
 /**
  * ショートコードの登録
  */
-add_shortcode('reading-minutes', 'reading_minutes_shortcode');
+add_shortcode( 'reading-minutes', 'reading_minutes_shortcode' );
 
+/**
+ *
+ * Step 2
+ *
+ */
 
 /**
  * 本文の前にテキスト表示。
+ *
  * @param string $content
  *
  * @return string
  */
 function add_reading_minutes_to_the_content( $content ) {
-	$minutes = count_reading_minutes( $content );
-	$template = 'この記事は約%d分で読めます。';
-	$text = sprintf( $template, $minutes );
-	$reading_minutes_html = '<span class="reading-minutes">'.esc_html( $text ). '</span>';
+	$minutes              = count_reading_minutes( $content );
+	$template             = 'この記事は約%d分で読めます。';
+	$text                 = sprintf( $template, $minutes );
+	$reading_minutes_html = '<span class="reading-minutes">' . esc_html( $text ) . '</span>';
 
-	return $reading_minutes_html.$content;
+	return $reading_minutes_html . $content;
 }
 
 /**
@@ -80,12 +85,19 @@ function add_reading_minutes_to_the_content( $content ) {
 add_filter( 'the_content', 'add_reading_minutes_to_the_content' );
 
 /**
+ *
+ * Step 3
+ *
+ */
+
+/**
  * プラグインのスタイルシートを登録
  */
 function add_reading_minutes_styles() {
-	wp_enqueue_style('plugin-hans-on-sample', plugin_dir_url(__FILE__). 'style.css' );
+	wp_enqueue_style( 'plugin-hans-on-sample', plugin_dir_url( __FILE__ ) . 'style.css' );
 }
+
 /**
  * アクションフックを登録
  */
-add_action( 'wp_enqueue_scripts', 'add_reading_minutes_styles');
+add_action( 'wp_enqueue_scripts', 'add_reading_minutes_styles' );
