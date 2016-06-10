@@ -13,6 +13,20 @@
 
 
 /**
+ * プラグインで最初に実行される関数。いわゆるエントリーポイント。
+ * PHPは書くと動いちゃうので、関数にまとめた方が全体の把握がしやすい。
+ */
+function plugin_hans_on_sample_init() {
+	/**
+	 * ショートコードの登録
+	 */
+	add_shortcode('reading-minutes', 'reading_minutes_shortcode');
+}
+
+plugin_hans_on_sample_init();
+
+
+/**
  *
  * 文字列から何分で読めるか計算する
  *
@@ -52,7 +66,5 @@ function reading_minutes_shortcode( $attr , $content = '' ) {
 	return '<p class="reading-minutes">'.esc_html( $text ). '</p>';
 }
 
-/**
- * ショートコードの登録
- */
-add_shortcode('reading-minutes', 'reading_minutes_shortcode');
+
+
