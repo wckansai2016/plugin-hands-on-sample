@@ -45,11 +45,11 @@ function reading_minutes_shortcode( $attr , $content = '' ) {
 	$content = $post->post_content;
 	$minutes = count_reading_minutes( $content );
 
-	$template = 'この記事は約%d分で読めます';
+	$template = 'この記事は約%d分で読めます。';
 	$text = sprintf( $template, $minutes );
 
 	//エスケープ大切！
-	return esc_html( $text );
+	return '<p class="reading-minutes">'.esc_html( $text ). '</p>';
 }
 
 /**

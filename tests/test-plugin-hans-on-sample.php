@@ -26,7 +26,7 @@ EOM;
 		global $post;
 		$post = $this->factory->post->create_and_get( array( 'post_content' => $this->sample_content ) );
 		$actual = do_shortcode( '[reading-minutes]' );
-		$this->assertEquals( 'この記事は約1分で読めます', $actual );
+		$this->assertEquals( '<p class="reading-minutes">この記事は約1分で読めます。</p>', $actual );
 
 	}
 
