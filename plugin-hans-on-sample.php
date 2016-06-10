@@ -60,7 +60,3 @@ add_shortcode('reading-minutes', 'reading_minutes_shortcode');
 
 
 
-
-function add_reading_minutes_to_the_content( $content ) {
-
-}
