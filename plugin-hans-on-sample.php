@@ -10,3 +10,13 @@
  * Domain Path: /languages
  * @package Plugin-hans-on-sample
  */
+
+
+/**
+ * @param string $content
+ *
+ * @return int
+ */
+function count_reading_time( $content ) {
+	return (int) $min;
+}
