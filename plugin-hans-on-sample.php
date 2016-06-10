@@ -50,7 +50,7 @@ function reading_minutes_shortcode( $attr , $content = '' ) {
 	$text = sprintf( $template, $minutes );
 
 	//エスケープ大切！
-	return '<p class="reading-minutes">'.esc_html( $text ). '</p>';
+	return '<span class="reading-minutes">'.esc_html( $text ). '</span>';
 }
 
 /**
@@ -69,7 +69,7 @@ function add_reading_minutes_to_the_content( $content ) {
 	$minutes = count_reading_minutes( $content );
 	$template = 'この記事は約%d分で読めます。';
 	$text = sprintf( $template, $minutes );
-	$reading_minutes_html = '<p class="reading-minutes">'.esc_html( $text ). '</p>';
+	$reading_minutes_html = '<span class="reading-minutes">'.esc_html( $text ). '</span>';
 
 	return $reading_minutes_html.$content;
 }
