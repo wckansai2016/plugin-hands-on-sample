@@ -23,6 +23,8 @@ EOM;
 	 * test shortcode rendering
 	 */
 	public function test_shortcode() {
+		global $post;
+		$post = $this->factory->post->create_and_get( array( 'post_content' => $this->sample_content ) );
 		$actual = do_shortcode( '[reading-minutes]' );
 		$this->assertEquals( 'この記事は約1分で読めます', $actual );
 
@@ -33,7 +35,6 @@ EOM;
 	 *
 	 */
 	public function test_get_the_reading_minutes() {
-		$content = "";
 		$post = $this->factory->post->create_and_get( array( 'post_content' => $this->sample_content ) );
 		$count = count_reading_minutes( $post->post_content );
 		$this->assertEquals( 1, $count );
