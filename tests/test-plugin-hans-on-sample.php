@@ -29,13 +29,13 @@ EOM;
 	}
 
 	/**
-	 * @test count_reading_time
+	 * @test count_reading_minutes
 	 *
 	 */
-	public function test_get_the_reading_time() {
+	public function test_get_the_reading_minutes() {
 		$content = "";
 		$post = $this->factory->post->create_and_get( array( 'post_content' => $this->sample_content ) );
-		$count = count_reading_time( $post->post_content );
+		$count = count_reading_minutes( $post->post_content );
 		$this->assertEquals( 1, $count );
 	}
 }
