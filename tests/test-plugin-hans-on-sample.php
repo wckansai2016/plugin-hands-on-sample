@@ -23,7 +23,7 @@ EOM;
 	 * test shortcode rendering
 	 */
 	public function test_shortcode() {
-		$actual = do_shortcode( '[reading-time]' );
+		$actual = do_shortcode( '[reading-minutes]' );
 		$this->assertEquals( 'この記事は約1分で読めます', $actual );
 
 	}
