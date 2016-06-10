@@ -59,4 +59,24 @@ function reading_minutes_shortcode( $attr , $content = '' ) {
 add_shortcode('reading-minutes', 'reading_minutes_shortcode');
 
 
+/**
+ * 本文の前にテキスト表示。
+ * @param string $content
+ *
+ * @return string
+ */
+function add_reading_minutes_to_the_content( $content ) {
+	$minutes = count_reading_minutes( $content );
+	$template = 'この記事は約%d分で読めます。';
+	$text = sprintf( $template, $minutes );
+	$reading_minutes_html = '<p class="reading-minutes">'.esc_html( $text ). '</p>';
+
+	return $reading_minutes_html.$content;
+}
+
+/**
+ * フィルターフックを登録
+ */
+add_filter( 'the_content', 'add_reading_minutes_to_the_content' );
+
 

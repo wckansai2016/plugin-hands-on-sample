@@ -36,7 +36,18 @@ EOM;
 		$post = $this->factory->post->create_and_get( array( 'post_content' => $this->sample_content ) );
 		$actual = do_shortcode( '[reading-minutes]' );
 		$this->assertEquals( '<p class="reading-minutes">この記事は約1分で読めます。</p>', $actual );
+	}
 
+
+	/**
+	 * @test
+	 */
+	public function test_the_content() {
+		global $post;
+		$post = $this->factory->post->create_and_get( array( 'post_content' => $this->sample_content ) );
+		setup_postdata( $post );
+		$this->expectOutputString( '<p class="reading-minutes">この記事は約1分で読めます。</p>'.wpautop( $this->sample_content ) );
+		the_content();
 	}
 }
 
