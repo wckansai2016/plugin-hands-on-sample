@@ -2,10 +2,10 @@
 /**
  * Plugin Name: Plugin-hans-on-sample
  * Version: 0.1-alpha
- * Description: PLUGIN DESCRIPTION HERE
- * Author: YOUR NAME HERE
- * Author URI: YOUR SITE HERE
- * Plugin URI: PLUGIN SITE HERE
+ * Description: WCK2016 Plguin Hans-on Sample.
+ * Author: WCK2016 Plguin Hans-on Team
+ * Author URI: https://2016.kansai.wordcamp.org/
+ * Plugin URI: https://github.com/wckansai2016/plugin-hands-on-sample
  * Text Domain: plugin-hans-on-sample
  * Domain Path: /languages
  * @package Plugin-hans-on-sample
