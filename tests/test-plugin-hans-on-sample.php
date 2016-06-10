@@ -1,12 +1,12 @@
 <?php
 /**
- * Class SampleTest
+ * Class TestPluginHansOnSample
  *
- * @package 
+ * @package plugin-hans-on-sample
  */
 
 /**
- * Sample test case.
+ *  test case.
  */
 class TestPluginHansOnSample extends WP_UnitTestCase {
 
