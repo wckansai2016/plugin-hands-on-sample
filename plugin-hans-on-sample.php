@@ -45,8 +45,7 @@ function reading_minutes_shortcode( $attr, $content = '' ) {
 	$content = $post->post_content;
 	$minutes = count_reading_minutes( $content );
 
-	$template = 'この記事は約%d分で読めます。';
-	$text     = sprintf( $template, $minutes );
+	$text     = sprintf( 'この記事は約%d分で読めます。', $minutes );
 
 	//エスケープ大切！
 	return '<span class="reading-minutes">' . esc_html( $text ) . '</span>';
@@ -72,8 +71,7 @@ add_shortcode( 'reading-minutes', 'reading_minutes_shortcode' );
  */
 function add_reading_minutes_to_the_content( $content ) {
 	$minutes              = count_reading_minutes( $content );
-	$template             = 'この記事は約%d分で読めます。';
-	$text                 = sprintf( $template, $minutes );
+	$text                 = sprintf( 'この記事は約%d分で読めます。', $minutes );
 	$reading_minutes_html = '<span class="reading-minutes">' . esc_html( $text ) . '</span>';
 
 	return $reading_minutes_html . $content;
