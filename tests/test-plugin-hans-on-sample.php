@@ -37,8 +37,40 @@ EOM;
 		$actual = do_shortcode( '[reading-minutes]' );
 		$this->assertEquals( '<span class="reading-minutes">この記事は約1分で読めます。</span>', $actual );
 	}
+	
+	/**
+	 * @test
+	 * test shortcode rendering
+	 */
+	public function test_shortcode_param_h() {
+		global $post;
+		$post = $this->factory->post->create_and_get( array( 'post_content' => $this->sample_content ) );
+		$actual = do_shortcode( '[reading-minutes unit="h"]' );
+		$this->assertEquals( '<span class="reading-minutes">この記事は約0時間で読めます。</span>', $actual );
+	}
 
+	/**
+	 * @test
+	 * test shortcode rendering
+	 */
+	public function test_shortcode_param_m() {
+		global $post;
+		$post = $this->factory->post->create_and_get( array( 'post_content' => $this->sample_content ) );
+		$actual = do_shortcode( '[reading-minutes unit="m"]' );
+		$this->assertEquals( '<span class="reading-minutes">この記事は約1分で読めます。</span>', $actual );
+	}
 
+	/**
+	 * @test
+	 * test shortcode rendering
+	 */
+	public function test_shortcode_param_s() {
+		global $post;
+		$post = $this->factory->post->create_and_get( array( 'post_content' => $this->sample_content ) );
+		$actual = do_shortcode( '[reading-minutes unit="s"]' );
+		$this->assertEquals( '<span class="reading-minutes">この記事は約60秒で読めます。</span>', $actual );
+	}
+	
 	/**
 	 * @test
 	 */
