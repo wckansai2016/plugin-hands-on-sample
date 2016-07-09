@@ -35,16 +35,41 @@ function count_reading_minutes( $content ) {
  *
  * ショートコードの実装。
  *
- * @param string $attr
+ * @param array $attr
  * @param string $content
  */
 function reading_minutes_shortcode( $attr, $content = '' ) {
-
+	//[reading-minutes unit="m"]
+	
+	$param = shortcode_atts( array(
+		'unit' => 'm',
+	),$attr, 'reading-minutes' );
+	
 	$post    = get_post(); // global $post とほぼ同じ動作。
 	$content = $post->post_content;
 	$minutes = count_reading_minutes( $content );
+	
+	$unit = '';
+	if( $param['unit'] == 'h'){
+		//時
+		$time = $minutes / 60;
+		$unit = '時間';
+		
+		
+	}
+	elseif( $param['unit'] == 'm' ) {
+		//分
+		$time = $minutes;
+		$unit = '分';
+	}
+	else {
+		//秒
+		$time = $minutes * 60;
+		$unit = '秒';
+	}
+	
 
-	$text     = sprintf( 'この記事は約%d分で読めます。', $minutes );
+	$text     = sprintf( 'この記事は約%d%sで読めます。', $time, $unit );
 
 	//エスケープ大切！
 	return '<span class="reading-minutes">' . esc_html( $text ) . '</span>';
